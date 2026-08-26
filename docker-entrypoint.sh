@@ -22,5 +22,5 @@ if [ ! -x node_modules/.bin/astro ]; then
   fi
 fi
 
-echo "Markiz site: http://localhost:4321/"
+echo "Markiz site: http://127.0.0.1:4321/  (if localhost 404s: npm run free-localhost)"
 exec "$@"

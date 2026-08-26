@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "astro dev --host 0.0.0.0 --port 4321",
     "build": "astro build",
-    "preview": "astro build && astro preview --host 0.0.0.0 --port 4321"
+    "preview": "astro build && astro preview --host 0.0.0.0 --port 4321",
+    "free-localhost": "sh -c 'pids=$(lsof -ti6TCP:4321 -sTCP:LISTEN 2>/dev/null); if [ -n \"$pids\" ]; then kill $pids; echo \"killed IPv6 :4321 ($pids)\"; else echo \"nothing listening on IPv6 :4321\"; fi'"
   },
   "dependencies": {
     "astro": "^5.7.0"
