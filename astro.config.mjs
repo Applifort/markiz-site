@@ -7,4 +7,9 @@ export default defineConfig({
     port: 4321,
     allowedHosts: true,
   },
+  vite: {
+    server: {
+      allowedHosts: true,
+    },
+  },
 });
