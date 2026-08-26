@@ -1,0 +1,98 @@
+---
+import BrowserFrame from './BrowserFrame.astro';
+import type { Scene } from './BrowserFrame.astro';
+
+interface Capability {
+  kicker: string;
+  title: string;
+  text: string;
+  reverse?: boolean;
+  scene: Scene;
+}
+
+const items: Capability[] = [
+  {
+    kicker: 'Этикетки',
+    title: 'Макеты и печать — внутри операции',
+    text: 'Собрали коды — сразу макет и печать. Перепечатка не требует обхода кабинета. Имя операции попадает на этикетку, партия читается с листа.',
+    scene: {
+      id: 'labels',
+      n: '01',
+      label: 'Этикетки',
+      src: '/screenshots/07-print-templates.png',
+      alt: 'Список макетов этикеток в Маркизе',
+    },
+  },
+  {
+    kicker: 'Сценарии',
+    title: 'Один раз прошли путь — дальше кнопка',
+    text: 'Сохраняете операцию как сценарий и запускаете его снова. Прозрачно: видно текущий шаг, можно остановить. Нужны включённый компьютер и вставленная ЦП.',
+    reverse: true,
+    scene: {
+      id: 'workspace',
+      n: '02',
+      label: 'Операция',
+      src: '/screenshots/04-operation-workspace.png',
+      alt: 'Окно операции со статусами эмиссии, нанесения, агрегации и ввода в оборот',
+    },
+  },
+  {
+    kicker: 'Организации',
+    title: 'Несколько юрлиц в одном профиле',
+    text: 'Производство, импорт, площадка на маркетплейсе — переключаетесь между организациями, не плодя кабинеты. Отдельного тарифа за каждое юрлицо нет.',
+    scene: {
+      id: 'orgs',
+      n: '03',
+      label: 'Дашборд',
+      src: '/screenshots/02-dashboard.png',
+      alt: 'Дашборд с несколькими организациями в одном профиле',
+    },
+  },
+  {
+    kicker: 'ЭДО',
+    title: 'УПД рядом с кодами, не в третьем окне',
+    text: 'Документы оборота живут в той же операции, что и кизы. Не нужно собирать партию из трёх кабинетов, чтобы закрыть отгрузку.',
+    reverse: true,
+    scene: {
+      id: 'ops',
+      n: '04',
+      label: 'Операции',
+      src: '/screenshots/03-operations-list.png',
+      alt: 'Список операций с документами Честного знака на каждой строке',
+    },
+  },
+];
+---
+
+<section class="section surface" id="capabilities">
+  <div class="container">
+    <header class="section-head reveal">
+      <p class="kicker">Возможности</p>
+      <h2 class="big-head">То, чего не хватает в кабинете.</h2>
+      <p class="lead-muted">
+        Этикетки, сценарии, несколько организаций, ЭДО — в той же рамке, что и работа.
+      </p>
+    </header>
+    <div class="cap-list">
+      {
+        items.map((item) => (
+          <article class:list={['cap-row', { reverse: item.reverse }]}>
+            <div class="cap-copy reveal">
+              <p class="kicker hot">{item.kicker}</p>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </div>
+            <div class="reveal">
+              <BrowserFrame
+                scenes={[item.scene]}
+                addr={`markiz / ${item.kicker.toLowerCase()}`}
+                rec={item.kicker.toLowerCase()}
+                autoplay={false}
+              />
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

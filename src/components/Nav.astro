@@ -1,0 +1,53 @@
+---
+const links = [
+  { href: '#pain', label: 'Боль' },
+  { href: '#how', label: 'Как это работает' },
+  { href: '#capabilities', label: 'Возможности' },
+  { href: '#pricing', label: 'Цена' },
+  { href: '#referral', label: 'Партнёрам' },
+];
+---
+
+<div class="nav-wrap" id="navwrap">
+  <nav class="nav" aria-label="Основная">
+    <a class="logo" href="#top">
+      <img src="/markiz-logo.svg" alt="" width="32" height="32" />
+      <span class="word">Маркиз</span>
+    </a>
+    <div class="nav-links">
+      {links.map((link) => (
+        <a class="nav-link" href={link.href}>{link.label}</a>
+      ))}
+    </div>
+    <div class="nav-cta">
+      <a class="nav-link" href="#">Войти</a>
+      <a class="btn btn-light btn-sm" href="#">Начать</a>
+      <button class="nav-burger" type="button" aria-label="Открыть меню" data-open-sheet>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+</div>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Меню" aria-hidden="true">
+  <div class="sheet-top">
+    <a class="logo" href="#top" data-close-sheet>
+      <img src="/markiz-logo.svg" alt="" width="32" height="32" />
+      <span class="word">Маркиз</span>
+    </a>
+    <button class="icon-btn" type="button" aria-label="Закрыть меню" data-close-sheet>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M6 6l12 12M18 6L6 18"></path>
+      </svg>
+    </button>
+  </div>
+  <div class="sheet-links">
+    {links.map((link) => (
+      <a href={link.href} data-close-sheet>{link.label}</a>
+    ))}
+    <a href="#" data-close-sheet>Войти</a>
+  </div>
+  <a class="btn btn-light sheet-cta" href="#">Начать</a>
+</div>
