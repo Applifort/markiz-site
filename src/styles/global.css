@@ -1093,7 +1093,7 @@ html.js .reveal.in {
 /* ---------- responsive ---------- */
 @media (max-width: 980px) {
   .nav-links,
-  .nav-cta .btn-outline {
+  .nav-cta > .nav-link {
     display: none;
   }
 
