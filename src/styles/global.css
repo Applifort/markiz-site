@@ -1,35 +1,35 @@
 :root {
-  --ink-00: #eceaef;
-  --ink-06: #9d99a6;
-  --ink-07: #8b8793;
-  --ink-08: #76727e;
-  --ink-10: #5a5662;
-  --ink-12: #35323b;
-  --ink-13: #24222a;
-  --ink-14: #141318;
-  --ink-15: #09080c;
+  --ink-00: #09080c;
+  --ink-06: #3a3642;
+  --ink-07: #4e4a56;
+  --ink-08: #625e6a;
+  --ink-10: #76727e;
+  --ink-12: #c8c4d0;
+  --ink-13: #ddd9e4;
+  --ink-14: #f2f0f6;
+  --ink-15: #faf9fc;
 
   --bg: var(--ink-15);
   --surface: var(--ink-14);
-  --elevated: #1b1921;
-  --charcoal: #0f0e13;
+  --elevated: #eceaef;
+  --charcoal: #e8e6ed;
   --fg: var(--ink-00);
   --fg-secondary: var(--ink-06);
   --fg-muted: var(--ink-07);
   --fg-subtle: var(--ink-08);
   --border: var(--ink-13);
   --border-strong: var(--ink-12);
-  --border-light: rgba(236, 234, 239, 0.1);
+  --border-light: rgba(9, 8, 12, 0.08);
 
   --accent: #9b7ed4;
   --accent-strong: #7c5cbf;
-  --accent-soft: rgba(155, 126, 212, 0.14);
-  --accent-glow: rgba(155, 126, 212, 0.38);
+  --accent-soft: rgba(155, 126, 212, 0.12);
+  --accent-glow: rgba(155, 126, 212, 0.28);
   --mark: #e38a3a;
 
-  --btn-primary-bg: #e4e1ea;
-  --btn-primary-fg: #0c0b10;
-  --btn-primary-hover: #f2f0f6;
+  --btn-primary-bg: #141318;
+  --btn-primary-fg: #f2f0f6;
+  --btn-primary-hover: #24222a;
 
   --font-display: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-sans: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
@@ -64,8 +64,8 @@
   --r-md: 16px;
   --r-sm: 8px;
 
-  --shadow-md: 0 12px 32px -12px rgba(0, 0, 0, 0.7);
-  --shadow-lg: 0 30px 80px -24px rgba(0, 0, 0, 0.88);
+  --shadow-md: 0 12px 32px -12px rgba(9, 8, 12, 0.1);
+  --shadow-lg: 0 30px 80px -24px rgba(9, 8, 12, 0.14);
 
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -114,7 +114,7 @@ button {
 }
 
 ::selection {
-  background: rgba(155, 126, 212, 0.32);
+  background: rgba(155, 126, 212, 0.22);
 }
 
 .skip {
@@ -294,7 +294,7 @@ h3 {
 
 .btn-outline:hover {
   border-color: var(--fg-secondary);
-  background: rgba(236, 234, 239, 0.04);
+  background: rgba(9, 8, 12, 0.04);
 }
 
 .btn-sm {
@@ -325,7 +325,7 @@ h3 {
 }
 
 .nav-wrap.scrolled {
-  background: rgba(9, 8, 12, 0.72);
+  background: rgba(250, 249, 252, 0.82);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border);
 }
@@ -483,8 +483,8 @@ h3 {
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 70% 55% at 88% 8%, rgba(155, 126, 212, 0.16), transparent 60%),
-    radial-gradient(ellipse 50% 40% at 10% 90%, rgba(227, 138, 58, 0.06), transparent 55%);
+    radial-gradient(ellipse 70% 55% at 88% 8%, rgba(155, 126, 212, 0.12), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 10% 90%, rgba(227, 138, 58, 0.08), transparent 55%);
 }
 
 .hero-grid {
@@ -539,7 +539,7 @@ h3 {
   font-family: var(--font-mono);
   font-size: 11px;
   color: var(--fg-secondary);
-  background: rgba(155, 126, 212, 0.06);
+  background: rgba(155, 126, 212, 0.08);
 }
 
 .launch-pill i {
@@ -641,7 +641,7 @@ h3 {
 
 .sc-body {
   position: relative;
-  background: #050507;
+  background: var(--elevated);
   aspect-ratio: 16 / 10.4;
   min-height: 280px;
 }

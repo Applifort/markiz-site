@@ -16,9 +16,9 @@ fi
 if [ ! -x node_modules/.bin/astro ]; then
   echo "Dependencies missing, installing..."
   if [ -f package-lock.json ]; then
-    npm ci
+    npm ci || npm ci
   else
-    npm install
+    npm install || npm install
   fi
 fi
 
