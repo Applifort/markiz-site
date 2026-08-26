@@ -5,9 +5,10 @@ services:
       - "4321:4321"
     volumes:
       - .:/app
-      - node_modules:/app/node_modules
+      - markiz_npm:/app/node_modules
     environment:
       NODE_ENV: development
+    command: ["npm", "run", "dev", "--", "--host", "0.0.0.0", "--port", "4321"]
 
 volumes:
-  node_modules:
+  markiz_npm:
