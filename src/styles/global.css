@@ -57,8 +57,7 @@
   --sp-9: 96px;
 
   --section-y: clamp(72px, 9vw, 128px);
-  --gutter: clamp(20px, 4.5vw, 88px);
-  --content: 1280px;
+  --gutter: clamp(20px, 3.2vw, 56px);
 
   --r-pill: 100px;
   --r-card: 28px;
@@ -138,8 +137,8 @@ button {
 
 .container {
   width: 100%;
-  max-width: var(--content);
-  margin: 0 auto;
+  max-width: none;
+  margin: 0;
   padding-inline: var(--gutter);
 }
 
@@ -332,8 +331,9 @@ h3 {
 }
 
 .nav {
-  max-width: var(--content);
-  margin: 0 auto;
+  width: 100%;
+  max-width: none;
+  margin: 0;
   padding: 16px var(--gutter);
   display: flex;
   align-items: center;
@@ -344,25 +344,18 @@ h3 {
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
   background: none;
   border: 0;
   padding: 0;
   flex: none;
+  line-height: 0;
 }
 
-.logo img {
-  width: 32px;
-  height: 32px;
-  border-radius: 9px;
-}
-
-.logo .word {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 19px;
-  letter-spacing: -0.03em;
-  color: var(--fg);
+.logo-mark {
+  display: block;
+  width: auto;
+  height: 28px;
+  border-radius: 0;
 }
 
 .nav-links {
@@ -502,8 +495,8 @@ h3 {
 }
 
 .hero h1 {
-  font-size: clamp(36px, 4.2vw, 62px);
-  max-width: 12ch;
+  font-size: clamp(36px, 4.6vw, 72px);
+  max-width: 14ch;
 }
 
 .hero .sub {
@@ -905,7 +898,8 @@ h3 {
 
 /* ---------- pricing / referral / cta ---------- */
 .price-card {
-  max-width: 640px;
+  width: 100%;
+  max-width: none;
   background: var(--surface);
   border: 1px solid var(--border-strong);
   border-radius: var(--r-card);
@@ -979,8 +973,9 @@ h3 {
 
 .contact-cta {
   text-align: center;
-  max-width: 680px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: none;
+  margin: 0;
 }
 
 .contact-cta h2 {
@@ -1019,20 +1014,12 @@ h3 {
 .footer-brand .brand-row {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  font-size: 28px;
+  line-height: 0;
 }
 
-.footer-brand img {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-}
-
-.footer-brand .word {
-  font-family: var(--font-display);
-  font-weight: 700;
-  letter-spacing: -0.03em;
+.footer-brand .logo-mark {
+  height: 32px;
+  width: auto;
 }
 
 .footer-brand p {

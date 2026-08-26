@@ -1,0 +1,16 @@
+---
+interface Props {
+  height?: number;
+}
+
+const { height = 24 } = Astro.props;
+const width = Math.round((height * 106) / 24);
+---
+
+<img
+  class="logo-mark"
+  src="/markiz-wordmark.svg"
+  alt="Маркиз"
+  width={width}
+  height={height}
+/>

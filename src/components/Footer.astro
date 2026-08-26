@@ -1,4 +1,6 @@
 ---
+import Logo from './Logo.astro';
+
 const year = new Date().getFullYear();
 ---
 
@@ -7,8 +9,7 @@ const year = new Date().getFullYear();
     <div class="footer-grid">
       <div class="footer-brand">
         <a class="brand-row" href="#top">
-          <img src="/markiz-logo.svg" alt="" width="36" height="36" />
-          <span class="word">Маркиз</span>
+          <Logo height={32} />
         </a>
         <p>Честный знак для небольших производителей, импортёров и селлеров.</p>
       </div>
