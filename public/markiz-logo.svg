@@ -1,0 +1,13 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="mkzGradient" x1="16" y1="20" x2="112" y2="112" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FB923C"/>
+      <stop offset="1" stop-color="#EA580C"/>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="8" width="112" height="112" rx="28" fill="#FFF7ED"/>
+  <rect x="8" y="8" width="112" height="112" rx="28" stroke="#FDBA74" stroke-width="4"/>
+  <path d="M30 88V40H45.5L64 64L82.5 40H98V88H84V59L64 83L44 59V88H30Z" fill="#1F2937"/>
+  <circle cx="25" cy="102" r="8" fill="url(#mkzGradient)"/>
+  <circle cx="103" cy="26" r="8" fill="url(#mkzGradient)"/>
+</svg>
