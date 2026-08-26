@@ -1,0 +1,79 @@
+---
+import BrowserFrame from './BrowserFrame.astro';
+import type { Scene } from './BrowserFrame.astro';
+
+const launchDate = '1 июля 2026';
+
+const scenes: Scene[] = [
+  {
+    id: 'dashboard',
+    n: '01',
+    label: 'Дашборд',
+    src: '/screenshots/02-dashboard.png',
+    alt: 'Дашборд Маркиза: организации и быстрый вход в работу',
+  },
+  {
+    id: 'operations',
+    n: '02',
+    label: 'Операции',
+    src: '/screenshots/03-operations-list.png',
+    alt: 'Список операций с документами эмиссии, нанесения и ввода в оборот',
+  },
+  {
+    id: 'workspace',
+    n: '03',
+    label: 'Операция',
+    src: '/screenshots/04-operation-workspace.png',
+    alt: 'Окно операции: коды, статусы и создание документов Честного знака',
+  },
+  {
+    id: 'labels',
+    n: '04',
+    label: 'Этикетки',
+    src: '/screenshots/07-print-templates.png',
+    alt: 'Макеты этикеток внутри Маркиза',
+  },
+  {
+    id: 'cises',
+    n: '05',
+    label: 'Кизы',
+    src: '/screenshots/06-cises.png',
+    alt: 'Коды маркировки со статусами нанесения и типом эмиссии',
+  },
+];
+---
+
+<section class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="container hero-grid">
+    <div class="hero-inner reveal">
+      <p class="launch-pill">
+        <i></i>
+        Запуск {launchDate}
+      </p>
+      <p class="kicker hot">Честный знак</p>
+      <h1>
+        Все документы — <span class="dim">в одном окне операции.</span>
+      </h1>
+      <p class="sub">
+        Коды, нанесение, этикетки, УПД. Сохраняете путь как сценарий и запускаете одной кнопкой — без сидения у монитора.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn-light" href="#">Начать</a>
+        <a class="btn btn-outline" href="#how">Как это работает</a>
+      </div>
+      <p class="hero-tagline">
+        <b>Десктоп</b>
+        <span class="sep">·</span>
+        Chrome / Яндекс
+        <span class="sep">·</span>
+        КриптоПро
+        <span class="sep">·</span>
+        для небольших производств
+      </p>
+    </div>
+    <div class="hero-demo reveal">
+      <BrowserFrame scenes={scenes} addr="markiz" rec="операция" />
+    </div>
+  </div>
+</section>

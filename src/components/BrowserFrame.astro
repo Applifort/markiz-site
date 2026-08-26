@@ -1,0 +1,88 @@
+---
+export interface Scene {
+  id: string;
+  n: string;
+  label: string;
+  src: string;
+  alt: string;
+}
+
+interface Props {
+  scenes: Scene[];
+  addr?: string;
+  rec?: string;
+  autoplay?: boolean;
+  class?: string;
+}
+
+const {
+  scenes,
+  addr = 'markiz',
+  rec = 'операция',
+  autoplay = true,
+  class: className = '',
+} = Astro.props;
+
+const uid = `scenes-${scenes.map((s) => s.id).join('-')}`;
+const showTabs = scenes.length > 1;
+---
+
+<div
+  class:list={['sc-wrap', className, { 'sc-static': !showTabs }]}
+  data-scenes={autoplay && showTabs ? '' : undefined}
+  data-scene-ms="5600"
+>
+  <figure class="sc-win">
+    <div class="sc-chrome" aria-hidden="true">
+      <span class="sc-dots"><i></i><i></i><i></i></span>
+      <span class="sc-addr">{addr}</span>
+      <span class="sc-rec">
+        <i class="dot"></i>
+        <b>rec</b>
+        <span>{rec}</span>
+      </span>
+    </div>
+    <div class="sc-body">
+      {
+        scenes.map((scene, i) => (
+          <div
+            class:list={['sc-scene', { on: i === 0 }]}
+            data-scene
+            id={`${uid}-${scene.id}`}
+            role="tabpanel"
+            aria-labelledby={showTabs ? `${uid}-tab-${scene.id}` : undefined}
+            aria-hidden={i === 0 ? 'false' : 'true'}
+          >
+            <img src={scene.src} alt={scene.alt} width="2180" height="1908" />
+          </div>
+        ))
+      }
+    </div>
+  </figure>
+
+  {
+    showTabs && (
+      <div class="sc-bar" role="tablist" aria-label="Сцены интерфейса">
+        {scenes.map((scene, i) => (
+          <button
+            class:list={['sc-seg', { on: i === 0 }]}
+            type="button"
+            role="tab"
+            id={`${uid}-tab-${scene.id}`}
+            data-scene-tab
+            aria-selected={i === 0 ? 'true' : 'false'}
+            aria-controls={`${uid}-${scene.id}`}
+          >
+            <span class="tk" aria-hidden="true">
+              <span class="fl" />
+            </span>
+            <span class="lb">
+              <span class="n">{scene.n}</span>
+              {scene.label}
+            </span>
+          </button>
+        ))}
+      </div>
+    )
+  }
+</div>

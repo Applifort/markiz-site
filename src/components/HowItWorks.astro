@@ -1,0 +1,67 @@
+---
+import BrowserFrame from './BrowserFrame.astro';
+import type { Scene } from './BrowserFrame.astro';
+
+const steps = [
+  {
+    n: '01',
+    title: 'Собрать операцию',
+    text: 'Товары, коды и шаги Честного знака живут в одном окне. Операция — единица работы, не отдельный документ.',
+  },
+  {
+    n: '02',
+    title: 'Пройти путь',
+    text: 'Эмиссия, нанесение, этикетки, УПД — по очереди, с понятным статусом. Видно, где сейчас процесс и что делать дальше.',
+  },
+  {
+    n: '03',
+    title: 'Сохранить сценарий',
+    text: 'Один раз прошли. Дальше — кнопка. Компьютер включён, ЦП вставлена: сценарий идёт, вы занимаетесь своим делом.',
+  },
+];
+
+const scene: Scene[] = [
+  {
+    id: 'workspace',
+    n: '03',
+    label: 'Операция',
+    src: '/screenshots/04-operation-workspace.png',
+    alt: 'Рабочее окно операции: коды маркировки, статусы документов и создание документов Честного знака',
+  },
+];
+---
+
+<section class="section" id="how">
+  <div class="container">
+    <header class="section-head reveal">
+      <p class="kicker hot">Как это работает</p>
+      <h2 class="big-head">Три шага. Операция — единица работы.</h2>
+      <p class="lead-muted">
+        Не набор разрозненных форм, а сквозной процесс: от заказа кодов до этикеток и УПД.
+      </p>
+    </header>
+    <div class="steps">
+      {
+        steps.map((step) => (
+          <article class="step reveal">
+            <p class="n">{step.n}</p>
+            <h3>{step.title}</h3>
+            <p>{step.text}</p>
+          </article>
+        ))
+      }
+    </div>
+    <p class="path reveal" aria-label="Путь операции">
+      <span>Коды</span>
+      <span class="arr" aria-hidden="true">→</span>
+      <span>Нанесение</span>
+      <span class="arr" aria-hidden="true">→</span>
+      <span>Этикетки</span>
+      <span class="arr" aria-hidden="true">→</span>
+      <span>УПД / ЭДО</span>
+    </p>
+    <div class="how-shot reveal">
+      <BrowserFrame scenes={scene} addr="markiz / операция" rec="заказ #37" autoplay={false} />
+    </div>
+  </div>
+</section>

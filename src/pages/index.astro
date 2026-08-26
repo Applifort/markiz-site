@@ -1,212 +1,130 @@
 ---
-const launchDate = '1 июля 2026';
-const features = [
-  'Учёт и управление заказами кодов маркировки в едином окне',
-  'Быстрое создание документов эмиссии и ввода в оборот',
-  'Контроль статусов кодов и ошибок с понятной аналитикой',
-  'Интеграции с внутренними процессами и API Честного Знака',
-];
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import Pain from '../components/Pain.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import Capabilities from '../components/Capabilities.astro';
+import Pricing from '../components/Pricing.astro';
+import Referral from '../components/Referral.astro';
+import FinalCta from '../components/FinalCta.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<!doctype html>
-<html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Markiz — скоро запуск</title>
-    <meta
-      name="description"
-      content="Markiz — сервис для работы с маркировкой. Запуск 1 июля 2026 года."
-    />
-    <style>
-      :root {
-        color-scheme: light;
-        --bg: #f6f7fb;
-        --surface: #ffffff;
-        --text: #101828;
-        --muted: #475467;
-        --brand: #f97316;
-        --border: #e4e7ec;
-      }
+<Base
+  title="Маркиз — Честный знак в одном окне"
+  description="Маркиз собирает документы Честного знака в одну операцию: коды, нанесение, этикетки, УПД. Для небольших производителей, импортёров и селлеров."
+>
+  <Nav />
+  <main id="main">
+    <Hero />
+    <Pain />
+    <HowItWorks />
+    <Capabilities />
+    <Pricing />
+    <Referral />
+    <FinalCta />
+  </main>
+  <Footer />
+</Base>
 
-      * {
-        box-sizing: border-box;
-      }
+<script>
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      body {
-        margin: 0;
-        font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        background: radial-gradient(circle at top, #fff7ed 0, var(--bg) 45%);
-        color: var(--text);
-      }
+  const nav = document.getElementById('navwrap');
+  const onScroll = () => nav?.classList.toggle('scrolled', window.scrollY > 8);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
 
-      .wrap {
-        width: min(1080px, 100% - 2rem);
-        margin: 0 auto;
-        padding: 2rem 0 3rem;
-      }
+  const sheet = document.getElementById('sheet');
+  const openSheet = () => {
+    if (!sheet) return;
+    sheet.classList.add('open');
+    sheet.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+  const closeSheet = () => {
+    if (!sheet) return;
+    sheet.classList.remove('open');
+    sheet.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  };
 
-      .hero {
-        border: 1px solid var(--border);
-        border-radius: 20px;
-        background: var(--surface);
-        padding: 2rem 1.25rem;
-        box-shadow: 0 16px 40px rgba(16, 24, 40, 0.08);
-      }
+  document.querySelectorAll('[data-open-sheet]').forEach((el) => {
+    el.addEventListener('click', openSheet);
+  });
+  document.querySelectorAll('[data-close-sheet]').forEach((el) => {
+    el.addEventListener('click', closeSheet);
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeSheet();
+  });
 
-      .brand {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-      }
+  const setupScenes = (root: HTMLElement) => {
+    const tabs = [...root.querySelectorAll<HTMLButtonElement>('[data-scene-tab]')];
+    const scenes = [...root.querySelectorAll<HTMLElement>('[data-scene]')];
+    if (!tabs.length || tabs.length !== scenes.length) return;
 
-      .brand img {
-        width: 48px;
-        height: 48px;
-      }
+    const duration = Number(root.dataset.sceneMs || 5600);
+    let index = 0;
+    let timer: number | undefined;
 
-      .brand-name {
-        font-size: 1.5rem;
-        font-weight: 700;
-      }
-
-      h1 {
-        margin: 1.5rem 0 0.75rem;
-        font-size: clamp(1.75rem, 5vw, 2.6rem);
-        line-height: 1.15;
-      }
-
-      .lead {
-        margin: 0;
-        color: var(--muted);
-        font-size: 1.05rem;
-        line-height: 1.5;
-      }
-
-      .launch {
-        margin-top: 1.25rem;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.4rem;
-        background: #fff4ed;
-        border: 1px solid #ffdcc2;
-        color: #9a3412;
-        border-radius: 999px;
-        padding: 0.5rem 0.9rem;
-        font-weight: 600;
-      }
-
-      .section {
-        margin-top: 1.5rem;
-        border: 1px solid var(--border);
-        border-radius: 20px;
-        background: var(--surface);
-        padding: 1.25rem;
-      }
-
-      h2 {
-        margin: 0;
-        font-size: 1.25rem;
-      }
-
-      .feature-list {
-        margin: 1rem 0 0;
-        padding-left: 1.1rem;
-        display: grid;
-        gap: 0.65rem;
-        color: var(--muted);
-      }
-
-      .screens {
-        margin-top: 1rem;
-        display: grid;
-        gap: 0.75rem;
-      }
-
-      .screen-item {
-        border: 1px solid var(--border);
-        border-radius: 14px;
-        overflow: hidden;
-        background: #fafafa;
-      }
-
-      .screen-item img {
-        display: block;
-        width: 100%;
-        height: auto;
-      }
-
-      .screen-item p {
-        margin: 0;
-        padding: 0.55rem 0.75rem 0.7rem;
-        font-size: 0.9rem;
-        color: var(--muted);
-      }
-
-      .note {
-        margin-top: 1rem;
-        color: var(--muted);
-        font-size: 0.9rem;
-      }
-
-      @media (min-width: 860px) {
-        .wrap {
-          padding-top: 3rem;
+    const show = (next: number) => {
+      tabs.forEach((tab, i) => {
+        const on = i === next;
+        tab.classList.toggle('on', on);
+        tab.classList.toggle('done', i < next);
+        tab.setAttribute('aria-selected', on ? 'true' : 'false');
+        const fill = tab.querySelector<HTMLElement>('.fl');
+        if (fill) {
+          fill.style.animation = 'none';
+          fill.style.right = on ? (reduceMotion ? '0' : '100%') : '100%';
+          void fill.offsetWidth;
+          if (on && !reduceMotion) {
+            fill.style.right = '';
+            fill.style.animation = '';
+          }
         }
+      });
+      scenes.forEach((scene, i) => {
+        const on = i === next;
+        scene.classList.toggle('on', on);
+        scene.setAttribute('aria-hidden', on ? 'false' : 'true');
+      });
+      index = next;
+      if (!reduceMotion) arm();
+    };
 
-        .hero {
-          padding: 2.5rem;
-        }
+    const arm = () => {
+      window.clearTimeout(timer);
+      timer = window.setTimeout(() => {
+        show((index + 1) % tabs.length);
+      }, duration);
+    };
 
-        .section {
-          padding: 1.5rem;
-        }
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => show(i));
+    });
 
-        .screens {
-          grid-template-columns: repeat(3, 1fr);
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <main class="wrap">
-      <section class="hero">
-        <div class="brand">
-          <img src="/markiz-logo.svg" alt="Логотип Markiz" />
-          <span class="brand-name">Markiz</span>
-        </div>
-        <h1>Сервис Markiz скоро откроется</h1>
-        <p class="lead">
-          Готовим запуск удобной платформы для автоматизации процессов маркировки и работы с документами.
-        </p>
-        <p class="launch">Запуск: {launchDate}</p>
-      </section>
+    if (!reduceMotion) arm();
+  };
 
-      <section class="section">
-        <h2>Основные возможности программы</h2>
-        <ul class="feature-list">
-          {features.map((feature) => <li>{feature}</li>)}
-        </ul>
-      </section>
+  document.querySelectorAll<HTMLElement>('[data-scenes]').forEach(setupScenes);
 
-      <section class="section">
-        <h2>Скриншоты интерфейса</h2>
-        <div class="screens">
-          <article class="screen-item">
-            <img src="/screenshots/dashboard.svg" alt="Скриншот дашборда Markiz" />
-            <p>Дашборд с ключевыми показателями</p>
-          </article>
-          <article class="screen-item">
-            <img src="/screenshots/emission.svg" alt="Скриншот страницы эмиссии кодов" />
-            <p>Работа с эмиссией и документами</p>
-          </article>
-          <article class="screen-item">
-            <img src="/screenshots/analytics.svg" alt="Скриншот аналитики статусов кодов" />
-            <p>Мониторинг статусов и ошибок</p>
-          </article>
-        </div>
-        <p class="note">Сейчас используются временные скриншоты-заглушки, их можно заменить на реальные в любой момент.</p>
-      </section>
-    </main>
-  </body>
-</html>
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+    );
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach((el) => el.classList.add('in'));
+  }
+</script>
