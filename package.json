@@ -10,6 +10,7 @@
     "free-localhost": "sh -c 'pids=$(lsof -ti6TCP:4321 -sTCP:LISTEN 2>/dev/null); if [ -n \"$pids\" ]; then kill $pids; echo \"killed IPv6 :4321 ($pids)\"; else echo \"nothing listening on IPv6 :4321\"; fi'"
   },
   "dependencies": {
+    "@astrojs/starlight": "^0.37.7",
     "astro": "^5.7.0"
   }
 }

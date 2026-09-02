@@ -13,7 +13,13 @@ npm install
 npm run dev
 ```
 
-Сайт: [http://localhost:4321/](http://localhost:4321/)
+Сайт:
+
+- [http://localhost:4321/](http://localhost:4321/) — главная
+- [http://localhost:4321/docs/](http://localhost:4321/docs/) — база знаний
+- [http://localhost:4321/partneram/](http://localhost:4321/partneram/) — партнёрам
+
+Поиск в базе знаний работает в **собранном** сайте (`npm run build`, затем `npm run preview`), не в `astro dev`.
 
 Через Docker — из корня репозитория:
 

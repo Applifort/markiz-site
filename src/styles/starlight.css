@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root {
+  --sl-font: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+  --sl-font-system: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+:root[data-theme='light'] {
+  --sl-color-bg: #faf9fc;
+  --sl-color-bg-nav: #faf9fc;
+  --sl-color-bg-sidebar: #f2f0f6;
+  --sl-color-hairline: #ddd9e4;
+  --sl-color-hairline-light: #ddd9e4;
+  --sl-color-text: #09080c;
+  --sl-color-text-accent: #7c5cbf;
+  --sl-color-accent-low: #efe8fb;
+  --sl-color-accent: #9b7ed4;
+  --sl-color-accent-high: #5c3da0;
+}
+
+:root[data-theme='dark'] {
+  --sl-color-accent-low: #3a2a5c;
+  --sl-color-accent: #9b7ed4;
+  --sl-color-accent-high: #d4c4f5;
+  --sl-color-text-accent: #d4c4f5;
+}
+
+.site-title img {
+  width: 28px;
+  height: 28px;
+}

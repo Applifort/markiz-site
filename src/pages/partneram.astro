@@ -1,0 +1,156 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const benefits = [
+  {
+    n: '01',
+    title: 'Комиссия пожизненно',
+    text: 'Привели клиента — доля с его подписки остаётся с вами, пока он платит. Не разовый бонус за лид и не «процент в первый месяц».',
+  },
+  {
+    n: '02',
+    title: 'Промокод и скидка клиенту',
+    text: 'У партнёра — реферальная ссылка и промокод. Клиенту на подключении скидка. Рекомендовать проще, когда человеку тоже выгодно зайти через вас.',
+  },
+  {
+    n: '03',
+    title: 'Без кабинета партнёра',
+    text: 'Отдельного кабинета, дашборда выплат и публичного входа «для партнёров» нет. Ссылка и промокод — этого достаточно, чтобы привести клиента.',
+  },
+];
+
+const audiences = [
+  {
+    n: '01',
+    title: 'Бухгалтеры',
+    text: 'Уже ведёте клиентам маркировку, ЭДО и отчётность. Маркиз закрывает операционку Честного знака, которую вам всё равно объясняют по вечерам.',
+  },
+  {
+    n: '02',
+    title: 'Интеграторы',
+    text: 'Внедряете учёт, кассу или ЭДО на небольших производствах. Маркиз не заменяет вашу систему — собирает коды, этикетки и УПД в одну операцию рядом.',
+  },
+  {
+    n: '03',
+    title: 'Кто уже говорит с клиентами Честного знака',
+    text: 'Внедренцы, сопровождение, отраслевые консультанты. Если вас и так спрашивают, «как проще жить с кизами» — это и есть партнёрский разговор.',
+  },
+];
+---
+
+<Base
+  title="Партнёрам — Маркиз"
+  description="Реферальная программа Маркиза: пожизненная комиссия за приведённого клиента, промокод и скидка на подключении. Для бухгалтеров, интеграторов и тех, кто уже работает с Честным знаком."
+>
+  <Nav />
+  <main id="main">
+    <section class="hero partner-hero" id="top">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="container">
+        <div class="partner-hero-inner reveal">
+          <p class="kicker hot">Партнёрам</p>
+          <h1>Привели клиента — <span class="dim">комиссия остаётся с вами.</span></h1>
+          <p class="sub">
+            Реферальная ссылка и промокод. Клиенту — скидка на подключении. Для тех, кто уже помогает небольшим производствам, импортёрам и селлерам с Честным знаком.
+          </p>
+          <div class="btn-row">
+            <a class="btn btn-light" href="#partner-cta">Как начать</a>
+            <a class="btn btn-outline" href="/#how">Как устроен продукт</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section charcoal" id="benefits">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="kicker">Зачем рекомендовать</p>
+          <h2 class="big-head">Не лид за разовый бонус, а клиент на подписке.</h2>
+          <p class="lead-muted">
+            Маркиз продаётся по подписке. Партнёрская схема следует за этим: комиссия, пока клиент с нами, плюс скидка человеку, которого вы привели.
+          </p>
+        </header>
+        <div class="pain-grid">
+          {
+            benefits.map((item) => (
+              <article class="pain-card reveal">
+                <p class="n">{item.n}</p>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="who">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="kicker hot">Кому это</p>
+          <h2 class="big-head">Тем, кто уже в разговоре про Честный знак.</h2>
+          <p class="lead-muted">
+            Не отдельная «партнёрская сеть» с витриной. Имеет смысл, если клиенты и так спрашивают вас, как закрыть коды, этикетки и УПД.
+          </p>
+        </header>
+        <div class="pain-grid">
+          {
+            audiences.map((item) => (
+              <article class="pain-card reveal">
+                <p class="n">{item.n}</p>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section surface" id="how-partner">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="kicker">Как это работает</p>
+          <h2 class="big-head">Ссылка, промокод, скидка. Без кабинета.</h2>
+        </header>
+        <div class="steps">
+          <article class="step reveal">
+            <p class="n">01</p>
+            <h3>Реферальная ссылка</h3>
+            <p>Клиент приходит по вашей ссылке. Подключение считается за вами — без отдельного «личного кабинета партнёра» на сайте.</p>
+          </article>
+          <article class="step reveal">
+            <p class="n">02</p>
+            <h3>Промокод на подключении</h3>
+            <p>Клиенту проще зайти через вас: на подключении скидка. Цифр скидки и комиссии заранее нет — как и цены тарифа, их сообщим ближе к запуску.</p>
+          </article>
+          <article class="step reveal">
+            <p class="n">03</p>
+            <h3>Комиссия, пока платит</h3>
+            <p>Клиент на подписке — вы получаете долю. Пока он с Маркизом, комиссия не сгорает после первого платежа.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="partner-cta">
+      <div class="container">
+        <div class="contact-cta reveal">
+          <p class="kicker hot">Дальше</p>
+          <h2>Готовы рекомендовать — начните с продукта.</h2>
+          <p class="lead-muted">
+            Кабинета партнёра и публичной формы заявки нет. Посмотрите, как Маркиз собирает Честный знак в одну операцию, и приводите клиентов ссылкой и промокодом, когда они появятся к запуску.
+          </p>
+          <div class="btn-row">
+            <a class="btn btn-light btn-lg" href="/">На сайт</a>
+            <a class="btn btn-outline btn-lg" href="/docs/">База знаний</a>
+          </div>
+          <p class="contact-fine">Без обещанных процентов, которых нет. Запуск 1 июля 2026.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>
