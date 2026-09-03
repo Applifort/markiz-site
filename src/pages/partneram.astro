@@ -2,6 +2,18 @@
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import BrowserFrame from '../components/BrowserFrame.astro';
+import type { Scene } from '../components/BrowserFrame.astro';
+
+const payoutScene: Scene[] = [
+  {
+    id: 'payouts',
+    n: '01',
+    label: 'Выплаты',
+    src: '/screenshots/partner-payouts.png',
+    alt: 'Макет: ежемесячные выплаты партнёра растут вместе с подписками приведённых клиентов. Цифры на картинке — иллюстрация, не обещание.',
+  },
+];
 
 const benefits = [
   {
@@ -16,8 +28,8 @@ const benefits = [
   },
   {
     n: '03',
-    title: 'Без кабинета партнёра',
-    text: 'Отдельного кабинета, дашборда выплат и публичного входа «для партнёров» нет. Ссылка и промокод — этого достаточно, чтобы привести клиента.',
+    title: 'Комиссия копится по месяцам',
+    text: 'Макет справа — как доля с подписок может накапливаться. Цифры на картинке иллюстративные, не обещание. Публичного входа для партнёров на сайте нет.',
   },
 ];
 
@@ -60,18 +72,17 @@ const audiences = [
             <a class="btn btn-outline" href="/#how">Как устроен продукт</a>
           </div>
         </div>
-        <article class="price-card reveal">
-          <p class="tag">Схема</p>
-          <h3>Ссылка, промокод, комиссия</h3>
-          <p>
-            Клиент приходит по вашей ссылке и подключается с промокодом. Скидка — ему, комиссия — вам, пока он на подписке. Кабинета партнёра нет.
+        <div class="reveal partner-hero-frame">
+          <BrowserFrame
+            scenes={payoutScene}
+            addr="markiz / выплаты"
+            rec="комиссия"
+            autoplay={false}
+          />
+          <p class="mono-foot partner-hero-note">
+            Макет: как копится комиссия с подписок. Не вход в кабинет, цифры не обещание.
           </p>
-          <div class="price-meta">
-            <span><b>Комиссия</b> · пожизненно</span>
-            <span><b>Клиенту</b> · скидка на подключении</span>
-            <span><b>Кабинет</b> · не нужен</span>
-          </div>
-        </article>
+        </div>
       </div>
     </section>
 
@@ -125,13 +136,13 @@ const audiences = [
       <div class="container">
         <header class="section-head reveal">
           <p class="kicker">Как это работает</p>
-          <h2 class="big-head">Ссылка, промокод, скидка. Без кабинета.</h2>
+          <h2 class="big-head">Ссылка, промокод, скидка.</h2>
         </header>
         <div class="steps">
           <article class="step reveal">
             <p class="n">01</p>
             <h3>Реферальная ссылка</h3>
-            <p>Клиент приходит по вашей ссылке. Подключение считается за вами — без отдельного «личного кабинета партнёра» на сайте.</p>
+            <p>Клиент приходит по вашей ссылке. Подключение считается за вами.</p>
           </article>
           <article class="step reveal">
             <p class="n">02</p>
@@ -153,7 +164,7 @@ const audiences = [
           <p class="kicker hot">Дальше</p>
           <h2>Готовы рекомендовать — начните с продукта.</h2>
           <p class="lead-muted">
-            Кабинета партнёра и публичной формы заявки нет. Посмотрите, как Маркиз собирает Честный знак в одну операцию, и приводите клиентов ссылкой и промокодом, когда они появятся к запуску.
+            Публичной формы заявки и входа партнёра на сайте нет. Посмотрите, как Маркиз собирает Честный знак в одну операцию, и приводите клиентов ссылкой и промокодом, когда они появятся к запуску.
           </p>
           <div class="btn-row">
             <a class="btn btn-light btn-lg" href="/">На сайт</a>

@@ -998,6 +998,10 @@ h3 {
   max-width: 16ch;
 }
 
+.partner-hero-note {
+  margin-top: 14px;
+}
+
 .contact-cta {
   text-align: center;
   width: 100%;

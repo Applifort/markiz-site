@@ -27,12 +27,11 @@ export default defineConfig({
         },
       },
       pagefind: true,
-      logo: {
-        src: './src/assets/markiz-mark.svg',
-        alt: 'Маркиз',
-      },
       components: {
-        SocialIcons: './src/components/starlight/SocialIcons.astro',
+        Header: './src/components/starlight/Header.astro',
+        SiteTitle: './src/components/starlight/SiteTitle.astro',
+        ThemeSelect: './src/components/starlight/ThemeSelect.astro',
+        ThemeProvider: './src/components/starlight/ThemeProvider.astro',
       },
       customCss: ['./src/styles/starlight.css'],
       sidebar: [

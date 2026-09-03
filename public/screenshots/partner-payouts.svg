@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @font-face {
+      font-family: 'Noto Sans';
+      src: url('/usr/share/fonts/truetype/noto/NotoSans-Regular.ttf') format('truetype');
+      font-weight: 400;
+    }
+    @font-face {
+      font-family: 'Noto Sans';
+      src: url('/usr/share/fonts/truetype/noto/NotoSans-Bold.ttf') format('truetype');
+      font-weight: 700;
+    }
+    .sans { font-family: 'Noto Sans', sans-serif; }
+  </style>
+  <rect width="1600" height="1000" fill="#faf9fc"/>
+
+  <g transform="translate(48,36)">
+    <path d="M12 36c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6 2.69-6 6-6z" fill="#e38a3a"/>
+    <path d="M36 36c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6 2.69-6 6-6z" fill="#e38a3a"/>
+    <path d="M42 16.8L24 36 6 16.8 12 10.2 24 22.8 42 4v12.8z" fill="#e38a3a"/>
+    <text class="sans" x="56" y="34" font-size="28" font-weight="700" fill="#09080c">маркиз</text>
+    <g transform="translate(980,4)">
+      <text class="sans" x="0" y="30" font-size="18" fill="#4e4a56">Обзор</text>
+      <text class="sans" x="110" y="30" font-size="18" fill="#4e4a56">Клиенты</text>
+      <rect x="228" y="6" width="120" height="36" rx="18" fill="rgba(155,126,212,0.16)"/>
+      <text class="sans" x="248" y="30" font-size="18" font-weight="700" fill="#7c5cbf">Выплаты</text>
+    </g>
+  </g>
+
+  <g>
+    <rect x="48" y="112" width="480" height="148" rx="24" fill="#ffffff" stroke="#ddd9e4"/>
+    <text class="sans" x="76" y="156" font-size="16" fill="#76727e">В этом месяце</text>
+    <text class="sans" x="76" y="206" font-size="40" font-weight="700" fill="#09080c">48 200 ₽</text>
+    <text class="sans" x="76" y="236" font-size="16" fill="#7c5cbf">+18% к прошлому</text>
+
+    <rect x="560" y="112" width="480" height="148" rx="24" fill="#ffffff" stroke="#ddd9e4"/>
+    <text class="sans" x="588" y="156" font-size="16" fill="#76727e">За полгода</text>
+    <text class="sans" x="588" y="206" font-size="40" font-weight="700" fill="#09080c">214 600 ₽</text>
+    <text class="sans" x="588" y="236" font-size="16" fill="#4e4a56">растёт каждый месяц</text>
+
+    <rect x="1072" y="112" width="480" height="148" rx="24" fill="#ffffff" stroke="#ddd9e4"/>
+    <text class="sans" x="1100" y="156" font-size="16" fill="#76727e">Активных клиентов</text>
+    <text class="sans" x="1100" y="206" font-size="40" font-weight="700" fill="#09080c">11</text>
+    <text class="sans" x="1100" y="236" font-size="16" fill="#4e4a56">на подписке</text>
+  </g>
+
+  <rect x="48" y="284" width="1504" height="668" rx="28" fill="#ffffff" stroke="#ddd9e4"/>
+  <text class="sans" x="84" y="336" font-size="26" font-weight="700" fill="#09080c">Ежемесячные выплаты</text>
+  <text class="sans" x="84" y="368" font-size="16" fill="#76727e">Комиссия с подписок приведённых клиентов</text>
+
+  <g font-family="Noto Sans, sans-serif" font-size="14" fill="#76727e">
+    <text x="84" y="430">56 тыс</text>
+    <text x="84" y="522">42 тыс</text>
+    <text x="84" y="614">28 тыс</text>
+    <text x="84" y="706">14 тыс</text>
+    <text x="84" y="798">0 тыс</text>
+  </g>
+  <g stroke="#eeeaf2" stroke-width="1">
+    <line x1="168" y1="420" x2="1488" y2="420"/>
+    <line x1="168" y1="512" x2="1488" y2="512"/>
+    <line x1="168" y1="604" x2="1488" y2="604"/>
+    <line x1="168" y1="696" x2="1488" y2="696"/>
+    <line x1="168" y1="788" x2="1488" y2="788"/>
+  </g>
+
+  <defs>
+    <linearGradient id="area" x1="0" y1="420" x2="0" y2="788" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#9b7ed4" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#9b7ed4" stop-opacity="0.02"/>
+    </linearGradient>
+  </defs>
+  <path
+    d="M280 696 C 396 683, 396 683, 512 670 C 628 650, 628 650, 744 630 C 860 604, 860 604, 976 578 C 1092 551, 1092 551, 1208 525 C 1324 499, 1324 499, 1440 473 L 1440 788 L 280 788 Z"
+    fill="url(#area)"
+  />
+  <path
+    d="M280 696 C 396 683, 396 683, 512 670 C 628 650, 628 650, 744 630 C 860 604, 860 604, 976 578 C 1092 551, 1092 551, 1208 525 C 1324 499, 1324 499, 1440 473"
+    stroke="#9b7ed4"
+    stroke-width="4"
+    fill="none"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <g fill="#ffffff" stroke="#9b7ed4" stroke-width="3">
+    <circle cx="280" cy="696" r="7"/>
+    <circle cx="512" cy="670" r="7"/>
+    <circle cx="744" cy="630" r="7"/>
+    <circle cx="976" cy="578" r="7"/>
+    <circle cx="1208" cy="525" r="7"/>
+    <circle cx="1440" cy="473" r="7"/>
+  </g>
+
+  <rect x="1328" y="412" width="148" height="40" rx="12" fill="#141318"/>
+  <text class="sans" x="1402" y="438" text-anchor="middle" font-size="15" fill="#f2f0f6">48 тыс ₽ · июн</text>
+
+  <g class="sans" font-size="16" fill="#76727e" text-anchor="middle">
+    <text x="280" y="830">Янв</text>
+    <text x="512" y="830">Фев</text>
+    <text x="744" y="830">Мар</text>
+    <text x="976" y="830">Апр</text>
+    <text x="1208" y="830">Май</text>
+    <text x="1440" y="830">Июн</text>
+  </g>
+</svg>
