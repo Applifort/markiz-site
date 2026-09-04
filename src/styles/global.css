@@ -375,8 +375,16 @@ h3 {
 }
 
 .nav-link:hover,
-.nav-link:focus-visible {
+.nav-link:focus-visible,
+.nav-link[aria-current='page'] {
   color: var(--fg);
+}
+
+.nav-divider {
+  width: 1px;
+  height: 16px;
+  background: var(--border-strong);
+  flex: none;
 }
 
 .nav-cta {
@@ -971,6 +979,29 @@ h3 {
   max-width: 28ch;
 }
 
+.referral-aside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.partner-hero {
+  padding-bottom: clamp(72px, 10vw, 120px);
+}
+
+.partner-hero-inner {
+  max-width: 36ch;
+}
+
+.partner-hero h1 {
+  max-width: 16ch;
+}
+
+.partner-hero-note {
+  margin-top: 14px;
+}
+
 .contact-cta {
   text-align: center;
   width: 100%;
@@ -1078,6 +1109,13 @@ html.js .reveal.in {
 }
 
 /* ---------- responsive ---------- */
+@media (max-width: 1240px) {
+  .nav-divider,
+  .nav-links > .nav-link:nth-child(n + 5) {
+    display: none;
+  }
+}
+
 @media (max-width: 980px) {
   .nav-links,
   .nav-cta > .nav-link {

@@ -1,0 +1,70 @@
+---
+import Search from '@astrojs/starlight/components/Search.astro';
+import SiteTitle from './SiteTitle.astro';
+
+const shouldRenderSearch = true;
+---
+
+<div class="header markiz-docs-header">
+  <div class="title-wrapper sl-flex">
+    <SiteTitle />
+  </div>
+  <div class="sl-flex print:hidden search-wrap">
+    {shouldRenderSearch && <Search />}
+  </div>
+  <div class="right-group sl-flex print:hidden">
+    <a class="markiz-site-link" href="/">На сайт</a>
+  </div>
+</div>
+
+<style>
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    height: 100%;
+    width: 100%;
+  }
+
+  .title-wrapper {
+    overflow: clip;
+    padding: 0.25rem;
+    margin: -0.25rem;
+    min-width: 0;
+    flex: none;
+  }
+
+  .search-wrap {
+    flex: 1 1 auto;
+    min-width: 0;
+    justify-content: center;
+  }
+
+  .right-group {
+    align-items: center;
+    flex: none;
+  }
+
+  .markiz-site-link {
+    font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: #3a3642;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .markiz-site-link:hover,
+  .markiz-site-link:focus-visible {
+    color: #09080c;
+  }
+
+  @media (min-width: 50rem) {
+    .header {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-content: center;
+    }
+  }
+</style>

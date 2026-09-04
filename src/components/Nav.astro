@@ -1,22 +1,40 @@
 ---
 import Logo from './Logo.astro';
 
-const links = [
-  { href: '#pain', label: 'Боль' },
-  { href: '#how', label: 'Как это работает' },
-  { href: '#capabilities', label: 'Возможности' },
-  { href: '#pricing', label: 'Цена' },
-  { href: '#referral', label: 'Партнёрам' },
+const pathname = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const isHome = pathname === '/';
+
+const siteLinks = [
+  { href: '/', label: 'Главная', current: isHome },
+  { href: '/docs/', label: 'База знаний', current: pathname.startsWith('/docs') },
+  { href: '/partneram/', label: 'Партнёрам', current: pathname.startsWith('/partneram') },
+];
+
+const sectionLinks = [
+  { href: isHome ? '#pain' : '/#pain', label: 'Боль' },
+  { href: isHome ? '#how' : '/#how', label: 'Как это работает' },
+  { href: isHome ? '#capabilities' : '/#capabilities', label: 'Возможности' },
+  { href: isHome ? '#pricing' : '/#pricing', label: 'Цена' },
 ];
 ---
 
 <div class="nav-wrap" id="navwrap">
   <nav class="nav" aria-label="Основная">
-    <a class="logo" href="#top">
+    <a class="logo" href="/">
       <Logo height={28} />
     </a>
     <div class="nav-links">
-      {links.map((link) => (
+      {siteLinks.map((link) => (
+        <a
+          class="nav-link"
+          href={link.href}
+          aria-current={link.current ? 'page' : undefined}
+        >
+          {link.label}
+        </a>
+      ))}
+      <span class="nav-divider" aria-hidden="true"></span>
+      {sectionLinks.map((link) => (
         <a class="nav-link" href={link.href}>{link.label}</a>
       ))}
     </div>
@@ -34,7 +52,7 @@ const links = [
 
 <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Меню" aria-hidden="true">
   <div class="sheet-top">
-    <a class="logo" href="#top" data-close-sheet>
+    <a class="logo" href="/" data-close-sheet>
       <Logo height={28} />
     </a>
     <button class="icon-btn" type="button" aria-label="Закрыть меню" data-close-sheet>
@@ -44,7 +62,12 @@ const links = [
     </button>
   </div>
   <div class="sheet-links">
-    {links.map((link) => (
+    {siteLinks.map((link) => (
+      <a href={link.href} data-close-sheet aria-current={link.current ? 'page' : undefined}>
+        {link.label}
+      </a>
+    ))}
+    {sectionLinks.map((link) => (
       <a href={link.href} data-close-sheet>{link.label}</a>
     ))}
     <a href="#" data-close-sheet>Войти</a>
