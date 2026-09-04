@@ -1,0 +1,26 @@
+---
+import Default from '@astrojs/starlight/components/MarkdownContent.astro';
+import MediaMode from '../docs/MediaMode.astro';
+
+const { entry } = Astro.locals.starlightRoute;
+const slug = entry.slug;
+const is404 = slug === '404' || slug.endsWith('/404');
+const data = entry.data as typeof entry.data & {
+  videoUrl?: string;
+  videoTitle?: string;
+};
+---
+
+{
+  is404 ? (
+    <Default>
+      <slot />
+    </Default>
+  ) : (
+    <MediaMode videoUrl={data.videoUrl} videoTitle={data.videoTitle ?? data.title}>
+      <Default>
+        <slot />
+      </Default>
+    </MediaMode>
+  )
+}
