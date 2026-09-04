@@ -118,3 +118,66 @@ starlight-theme-select,
 .social-icons::after {
   display: none !important;
 }
+
+html[data-media-mode='watch'] .media-mode [data-panel='read'] {
+  display: none !important;
+}
+
+html[data-media-mode='watch'] .media-mode [data-panel='watch'] {
+  display: block !important;
+}
+
+html[data-media-mode='watch'] .media-mode [role='tab'][data-mode='read'] {
+  background: transparent;
+  color: #4e4a56;
+  box-shadow: none;
+}
+
+html[data-media-mode='watch'] .media-mode [role='tab'][data-mode='watch'] {
+  background: #fff;
+  color: #09080c;
+  box-shadow: 0 1px 3px rgba(9, 8, 12, 0.08);
+}
+
+.kb-visual {
+  margin: 1.25rem 0 1.5rem;
+  padding: 0;
+}
+
+.kb-visual__frame {
+  display: grid;
+  place-items: center;
+  min-height: 8.5rem;
+  border: 1px dashed #c8c4d0;
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 12% 20%, rgba(155, 126, 212, 0.14), transparent 40%),
+    radial-gradient(circle at 88% 80%, rgba(227, 138, 58, 0.12), transparent 42%),
+    #f2f0f6;
+}
+
+.kb-visual__glyph {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 6px;
+  background:
+    repeating-conic-gradient(#09080c 0% 25%, transparent 0% 50%) 0 0 / 10px 10px,
+    #fff;
+  box-shadow: 0 0 0 3px #fff, 0 0 0 4px rgba(155, 126, 212, 0.45);
+}
+
+.kb-visual figcaption {
+  margin-top: 0.55rem;
+  font-size: 0.92rem;
+  color: #4e4a56;
+}
+
+.kb-visual__label {
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
+  color: #09080c;
+}
+
+.sl-markdown-content .cz-cycle :is(h2, p, a, ol, li) {
+  margin: revert;
+}

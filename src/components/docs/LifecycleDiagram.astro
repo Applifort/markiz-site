@@ -1,0 +1,408 @@
+---
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+
+const statuses = [
+  {
+    id: 'emitirovan',
+    label: 'Эмитирован',
+    href: '/docs/chestnyj-znak/emissiya/',
+  },
+  {
+    id: 'nanesen',
+    label: 'Нанесен',
+    href: '/docs/chestnyj-znak/nanesenie/',
+  },
+  {
+    id: 'v-oborote',
+    label: 'В обороте',
+    href: '/docs/chestnyj-znak/vvod-v-oborot/',
+  },
+  {
+    id: 'vybyl',
+    label: 'Выбыл',
+    href: '/docs/chestnyj-znak/vyvod-iz-oborota/',
+  },
+] as const;
+
+const steps = [
+  {
+    n: '01',
+    label: 'Карточка / GTIN',
+    href: '/docs/chestnyj-znak/kartochka-tovara/',
+    status: null,
+  },
+  {
+    n: '02',
+    label: 'Эмиссия',
+    href: '/docs/chestnyj-znak/emissiya/',
+    status: 'Эмитирован',
+  },
+  {
+    n: '03',
+    label: 'Этикетка',
+    href: '/docs/chestnyj-znak/etiketka-datamatrix/',
+    status: null,
+  },
+  {
+    n: '04',
+    label: 'Нанесение',
+    href: '/docs/chestnyj-znak/nanesenie/',
+    status: 'Нанесен',
+  },
+  {
+    n: '05',
+    label: 'Ввод',
+    href: '/docs/chestnyj-znak/vvod-v-oborot/',
+    status: 'В обороте',
+  },
+  {
+    n: '06',
+    label: 'УПД',
+    href: '/docs/chestnyj-znak/otgruzka-upd/',
+    status: null,
+  },
+  {
+    n: '07',
+    label: 'Вывод',
+    href: '/docs/chestnyj-znak/vyvod-iz-oborota/',
+    status: 'Выбыл',
+  },
+] as const;
+
+const headingId = compact ? 'cz-cycle-compact' : 'cz-cycle-full';
+---
+
+<nav class:list={['cz-cycle', 'not-content', compact && 'cz-cycle--compact']} aria-labelledby={headingId}>
+  <header class="cz-cycle__head">
+    <p class="cz-cycle__kicker">{compact ? 'Путь кода' : 'Жизненный цикл'}</p>
+    <h2 class="cz-cycle__title" id={headingId}>
+      {compact ? 'От эмиссии до выбытия' : 'Как код проходит статусы'}
+    </h2>
+    {
+      !compact && (
+        <p class="cz-cycle__aside">
+          В выгрузках иногда пишут по-английски:
+          <span class="cz-cycle__enums">EMITTED → APPLIED → INTRODUCED → RETIRED</span>
+        </p>
+      )
+    }
+  </header>
+
+  <ol class="cz-cycle__status" aria-label="Статусы кода в Честном знаке">
+    {
+      statuses.map((status, index) => (
+        <li class="cz-cycle__status-item">
+          {index > 0 && (
+            <span class="cz-cycle__chevron" aria-hidden="true">
+              →
+            </span>
+          )}
+          <a class={`cz-cycle__pill cz-cycle__pill--${status.id}`} href={status.href}>
+            {status.label}
+          </a>
+        </li>
+      ))
+    }
+  </ol>
+
+  {
+    !compact && (
+      <>
+        <ol class="cz-cycle__steps" aria-label="Шаги работы с кодом">
+          {steps.map((step) => (
+            <li class="cz-cycle__step">
+              <a class="cz-cycle__card" href={step.href}>
+                <span class="cz-cycle__n">{step.n}</span>
+                <span class="cz-cycle__label">{step.label}</span>
+                {step.status ? <span class="cz-cycle__chip">{step.status}</span> : null}
+              </a>
+            </li>
+          ))}
+        </ol>
+
+        <div class="cz-cycle__branches">
+          <p class="cz-cycle__branch-kicker">Короткие ветки</p>
+          <div class="cz-cycle__branch-grid">
+            <p class="cz-cycle__branch">
+              <span class="cz-cycle__branch-name">Импорт</span>
+              Карточка уже есть, эмиссия и ввод — с таможенным контуром. Дальше статусы те же.
+            </p>
+            <p class="cz-cycle__branch">
+              <span class="cz-cycle__branch-name">Остатки</span>
+              Товар уже на руках: код и ввод оформляют иначе, чем на новой партии. Статья — позже.
+            </p>
+          </div>
+        </div>
+      </>
+    )
+  }
+
+  {
+    compact && (
+      <p class="cz-cycle__more">
+        <a href="/docs/chestnyj-znak/zhiznennyj-cikl/">Как устроен жизненный цикл</a>
+      </p>
+    )
+  }
+</nav>
+
+<style>
+  .cz-cycle {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #fff;
+    border: 1px solid #ddd9e4;
+    border-radius: 16px;
+    padding: 1.15rem 1.15rem 1.05rem;
+    margin: 0 0 1.5rem;
+    color: #09080c;
+  }
+
+  .cz-cycle__head {
+    margin-bottom: 0.85rem;
+  }
+
+  .cz-cycle__kicker {
+    margin: 0 0 0.2rem;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #e38a3a;
+  }
+
+  .cz-cycle__title {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    color: #09080c;
+  }
+
+  .cz-cycle__aside {
+    margin: 0.4rem 0 0;
+    font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.82rem;
+    line-height: 1.4;
+    color: #76727e;
+  }
+
+  .cz-cycle__enums {
+    font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.01em;
+  }
+
+  .cz-cycle__status {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem 0.15rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .cz-cycle__status-item {
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+  }
+
+  .cz-cycle__chevron {
+    color: #c8c4d0;
+    padding: 0 0.15rem;
+    font-size: 0.9rem;
+  }
+
+  .cz-cycle__pill {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    padding: 0.35rem 0.75rem;
+    border-radius: 100px;
+    border: 1px solid transparent;
+    color: #09080c;
+  }
+
+  .cz-cycle__pill:hover,
+  .cz-cycle__pill:focus-visible {
+    border-color: #9b7ed4;
+  }
+
+  .cz-cycle__pill:focus-visible {
+    outline: 2px solid #9b7ed4;
+    outline-offset: 2px;
+  }
+
+  .cz-cycle__pill--emitirovan {
+    background: rgba(155, 126, 212, 0.16);
+  }
+
+  .cz-cycle__pill--nanesen {
+    background: rgba(227, 138, 58, 0.16);
+  }
+
+  .cz-cycle__pill--v-oborote {
+    background: rgba(155, 126, 212, 0.28);
+  }
+
+  .cz-cycle__pill--vybyl {
+    background: #f2f0f6;
+    color: #4e4a56;
+  }
+
+  .cz-cycle__steps {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 0.5rem;
+    list-style: none;
+    margin: 1rem 0 0;
+    padding: 0;
+  }
+
+  .cz-cycle__card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    min-height: 100%;
+    padding: 0.7rem 0.65rem 0.75rem;
+    border: 1px solid #ddd9e4;
+    border-radius: 12px;
+    background: #faf9fc;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .cz-cycle__card:hover,
+  .cz-cycle__card:focus-visible {
+    border-color: #9b7ed4;
+    background: #fff;
+  }
+
+  .cz-cycle__card:focus-visible {
+    outline: 2px solid #9b7ed4;
+    outline-offset: 2px;
+  }
+
+  .cz-cycle__n {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: #9b7ed4;
+  }
+
+  .cz-cycle__label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: #09080c;
+  }
+
+  .cz-cycle__chip {
+    margin-top: auto;
+    align-self: flex-start;
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: #c36e28;
+    background: rgba(227, 138, 58, 0.12);
+    border-radius: 100px;
+    padding: 0.15rem 0.45rem;
+  }
+
+  .cz-cycle__branches {
+    margin-top: 1rem;
+    padding-top: 0.9rem;
+    border-top: 1px dashed #ddd9e4;
+  }
+
+  .cz-cycle__branch-kicker {
+    margin: 0 0 0.55rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #76727e;
+  }
+
+  .cz-cycle__branch-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.65rem;
+  }
+
+  .cz-cycle__branch {
+    margin: 0;
+    padding: 0.7rem 0.8rem;
+    border-radius: 12px;
+    background: #f2f0f6;
+    font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.88rem;
+    line-height: 1.45;
+    color: #4e4a56;
+  }
+
+  .cz-cycle__branch-name {
+    display: block;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #09080c;
+    margin-bottom: 0.2rem;
+  }
+
+  .cz-cycle__more {
+    margin: 0.85rem 0 0;
+    font-size: 0.92rem;
+  }
+
+  .cz-cycle__more a {
+    color: #7c5cbf;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .cz-cycle__more a:hover,
+  .cz-cycle__more a:focus-visible {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 72rem) {
+    .cz-cycle__steps {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 50rem) {
+    .cz-cycle__steps,
+    .cz-cycle__branch-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 36rem) {
+    .cz-cycle__steps,
+    .cz-cycle__branch-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cz-cycle__card {
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.35rem 0.6rem;
+    }
+
+    .cz-cycle__chip {
+      margin-top: 0;
+      margin-left: auto;
+    }
+  }
+</style>

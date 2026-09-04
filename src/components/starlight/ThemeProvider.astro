@@ -3,4 +3,10 @@
   window.StarlightThemeProvider = {
     updatePickers() {},
   };
+  try {
+    var mediaMode = localStorage.getItem('markiz-docs-media-mode');
+    if (mediaMode === 'read' || mediaMode === 'watch') {
+      document.documentElement.dataset.mediaMode = mediaMode;
+    }
+  } catch (e) {}
 </script>
