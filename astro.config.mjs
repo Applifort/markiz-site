@@ -3,6 +3,12 @@ import starlight from '@astrojs/starlight';
 
 export default defineConfig({
   site: 'https://markiz.example.com',
+  redirects: {
+    '/docs/nachalo-raboty': '/docs/markiz/nachalo',
+    '/docs/operacii': '/docs/markiz/operacii',
+    '/docs/etiketki': '/docs/markiz/etiketki',
+    '/docs/scenarii': '/docs/markiz/scenarii',
+  },
   server: {
     host: true,
     port: 4321,
@@ -35,24 +41,38 @@ export default defineConfig({
       },
       customCss: ['./src/styles/starlight.css'],
       sidebar: [
+        { slug: 'docs', label: 'Обзор' },
         {
-          label: 'Начало работы',
+          label: 'Честный знак',
           items: [
-            { slug: 'docs', label: 'Обзор' },
-            { slug: 'docs/nachalo-raboty' },
+            { slug: 'docs/chestnyj-znak', label: 'Что такое Честный знак' },
+            { slug: 'docs/chestnyj-znak/glossarij' },
+            { slug: 'docs/chestnyj-znak/zhiznennyj-cikl' },
+            { slug: 'docs/chestnyj-znak/kartochka-tovara' },
+            { slug: 'docs/chestnyj-znak/emissiya' },
+            { slug: 'docs/chestnyj-znak/nanesenie' },
+            { slug: 'docs/chestnyj-znak/vvod-v-oborot' },
+            { slug: 'docs/chestnyj-znak/otgruzka-upd' },
+            { slug: 'docs/chestnyj-znak/vyvod-iz-oborota' },
+            { slug: 'docs/chestnyj-znak/etiketka-datamatrix' },
+            { slug: 'docs/chestnyj-znak/tovarnye-gruppy' },
+            { slug: 'docs/chestnyj-znak/legprom-obuv' },
           ],
         },
         {
-          label: 'Честный знак в Маркизе',
-          items: [{ slug: 'docs/chestnyj-znak' }, { slug: 'docs/operacii' }],
-        },
-        {
-          label: 'Этикетки',
-          items: [{ slug: 'docs/etiketki' }],
-        },
-        {
-          label: 'Сценарии',
-          items: [{ slug: 'docs/scenarii' }],
+          label: 'Маркиз',
+          items: [
+            { slug: 'docs/markiz/nachalo' },
+            { slug: 'docs/markiz/organizaciya' },
+            { slug: 'docs/markiz/dashbord' },
+            { slug: 'docs/markiz/tovary' },
+            { slug: 'docs/markiz/kody' },
+            { slug: 'docs/markiz/operacii' },
+            { slug: 'docs/markiz/dokumenty' },
+            { slug: 'docs/markiz/etiketki' },
+            { slug: 'docs/markiz/scenarii' },
+            { slug: 'docs/markiz/podklyuchenie-chz' },
+          ],
         },
       ],
     }),
