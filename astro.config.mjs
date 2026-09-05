@@ -33,6 +33,8 @@ export default defineConfig({
         },
       },
       pagefind: true,
+      tableOfContents: false,
+      pagination: false,
       components: {
         Header: './src/components/starlight/Header.astro',
         SiteTitle: './src/components/starlight/SiteTitle.astro',
